@@ -144,12 +144,12 @@ body {
 
 /* DESCRIÇÃO (padrão igual Sobre Nós) */
 .descricao{
-    max-width: 1200px;
-    margin: 26px auto 0;
-    padding: 0 18px;
+    max-width: 1440px;              /* mais espaço em telas grandes */
+    margin: 40px auto 0;
+    padding: 0 48px;                /* respiro lateral */
     display: grid;
-    grid-template-columns: 1.35fr 1fr 0.9fr;
-    gap: 16px;
+    grid-template-columns: 1.15fr 1fr; /* colunas mais equilibradas */
+    gap: 32px;                      /* distância confortável */
     align-items: stretch;
 }
 
@@ -170,6 +170,7 @@ body {
 .textoDescricao {
     flex: 2;
     min-width: 280px;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -190,6 +191,7 @@ body {
 
 .servicos {
     color: var(--muted);
+    width: 100%;
 }
 
 .servicosTitulo{
@@ -351,6 +353,10 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 .listaServicos li .icon{
@@ -477,6 +483,13 @@ body {
     .contatoGrid{
         grid-template-columns: repeat(2, 1fr);
     }
+    .descricao{
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    .textoDescricao{
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 520px){
@@ -502,3 +515,30 @@ body {
         margin-top: 10px;
     }
 }
+
+@media (max-width: 768px){
+    /* Mobile: deixa quebrar linha pra não estourar */
+    .listaServicos li{
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    /* garante que o texto pode encolher dentro do flex */
+    .servicos li{
+        min-width: 0;
+    }
+}
+
+
+/* evita qualquer estouro horizontal */
+html, body {
+    overflow-x: hidden;
+}
+
+.descricaoCard,
+.servicos li,
+.listaServicos li {
+    max-width: 100%;
+}
+
