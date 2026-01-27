@@ -55,8 +55,9 @@ body {
 
 /* LOGO */
 .logo-img {
-    height: 50px;
+    height: 65px;   /* controla o tamanho real da logo */
     width: auto;
+    padding: 0 0 0 15px;
 }
 
 /* MENU */
@@ -541,4 +542,45 @@ html, body {
 .listaServicos li {
     max-width: 100%;
 }
+
+/* BANCOS PARCEIROS */
+.bancos {
+    padding: 60px 20px 20px;
+    text-align: center;
+}
+
+.bancosWrap {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tituloBancos {
+    font-size: clamp(22px, 2.5vw, 32px);
+    margin-bottom: 30px;
+    color: var(--text);
+    letter-spacing: -0.02em;
+}
+
+.logos-bancos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    opacity: 0.85;
+}
+
+.logos-bancos img {
+    height: 38px;
+    width: auto;
+    filter: grayscale(1) brightness(2);
+    transition: all 0.3s ease;
+}
+
+.logos-bancos img:hover {
+    filter: grayscale(0) brightness(1.2);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 
