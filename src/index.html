@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styless.css" />
     <script src="main.js" defer></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styless.css">
-    <title>Versatil</title>
+    <title>Versátil</title>
 </head>
+
 <body>
-<div id = "home"></div>
+<div id="home"></div>
+
 <header class="site-header">
     <div>
         <nav class="navbar">
             <div class="logo-container">
-                <img class="logo-img" src="img/logo.png">
+                <img class="logo-img" src="img/logo.png" alt="Versátil" />
             </div>
 
-            <button class="menu-toggle" aria-label="Abrir menu">
-                ☰
-            </button>
+            <button class="menu-toggle" aria-label="Abrir menu">☰</button>
 
             <ul class="menu">
                 <li><a href="#home">Home</a></li>
@@ -31,55 +31,90 @@
         </nav>
     </div>
 </header>
+
 <main class="container">
     <div class="list">
+        <!-- ✅ removido o container duplicado -->
         <div class="video-bg-container">
-            <div class="video-bg-container">
-                <video autoplay muted loop playsinline class="video-bg">
-                    <source src="./videos/versat.webm" type="video/webm">
-                    Seu navegador não suporta vídeo HTML5.
-                </video>
-            </div>
+            <video autoplay muted loop playsinline class="video-bg">
+                <source src="./videos/versat.webm" type="video/webm" />
+                Seu navegador não suporta vídeo HTML5.
+            </video>
         </div>
     </div>
+
     <section class="descricao">
+        <!-- ESQUERDA -->
         <div class="descricaoCard textoDescricao">
             <h3>Líder de mercado</h3>
-            <p>Somos uma empresa multibancos com atuação estratégica no mercado financeiro, oferecendo soluções completas para pessoas físicas e jurídicas.
+            <p>
+                Somos uma empresa multibancos com atuação estratégica no mercado financeiro, oferecendo soluções completas para pessoas físicas e jurídicas.
                 Trabalhamos com eficiência, segurança e foco em resultados consistentes.
                 Mantemos parcerias com instituições financeiras de referência e contamos com uma equipe especializada.
-                Nosso objetivo é oferecer atendimento consultivo, processos ágeis e soluções alinhadas aos objetivos de cada cliente.</p>
+                Nosso objetivo é oferecer atendimento consultivo, processos ágeis e soluções alinhadas aos objetivos de cada cliente.
+            </p>
         </div>
 
+        <!-- DIREITA -->
         <div class="descricaoCard servicos">
             <p class="servicosTitulo">Atuamos na intermediação de produtos como:</p>
 
-            <ul class="listaServicos">
-                <li><span class="icon">🏠</span> Home Equity (crédito com garantia de imóvel) PF e PJ</li>
-                <li><span class="icon">💳</span> Capital de giro</li>
-                <li><span class="icon">🏢</span> Financiamento de imóveis residenciais e comerciais</li>
-                <li><span class="icon">🔄</span> Portabilidade de financiamento</li>
-                <li><span class="icon">📦</span> Giro de estoque para construtoras e incorporadoras</li>
-                <li><span class="icon">📑</span> Compra de carteiras de construtoras e incorporadoras</li>
-                <li><span class="icon">📄</span> Antecipação de recebíveis</li>
-                <li><span class="icon">📊</span> Plano empresário</li>
+            <ul class="listaServicos accordion" id="listaServicos">
+                <li class="accordion-item ativo">
+                    <button type="button" class="accordion-header" data-servico="home_equity" aria-expanded="true">
+                        <span class="icon">🏠</span>
+                        <!-- ✅ wrapper do texto pra alinhar o ícone ▾ no fim -->
+                        <span class="accordion-title">Home Equity (crédito com garantia de imóvel) PF e PJ</span>
+                        <span class="accordion-icon" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body">
+                        Linha de crédito com imóvel como garantia, oferecendo taxas reduzidas,
+                        prazos longos e uso livre do recurso para PF e PJ.
+                    </div>
+                </li>
+
+                <li class="accordion-item">
+                    <button type="button" class="accordion-header" data-servico="capital_giro" aria-expanded="false">
+                        <span class="icon">💳</span>
+                        <span class="accordion-title">Capital de giro</span>
+                        <span class="accordion-icon" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body">
+                        Crédito para manutenção do fluxo de caixa da empresa, cobrindo despesas
+                        operacionais e necessidades de curto prazo.
+                    </div>
+                </li>
+
+                <li class="accordion-item">
+                    <button type="button" class="accordion-header" data-servico="financiamento_imoveis" aria-expanded="false">
+                        <span class="icon">🏢</span>
+                        <span class="accordion-title">Financiamento de imóveis residenciais e comerciais</span>
+                        <span class="accordion-icon" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="accordion-body">
+                        Financiamento para aquisição de imóveis com condições personalizadas
+                        conforme perfil do cliente.
+                    </div>
+                </li>
             </ul>
         </div>
     </section>
+
     <section class="bancos">
         <div class="bancosWrap">
             <h2 class="tituloBancos">Instituições Parceiras</h2>
 
             <div class="logos-bancos">
-                <img src="img/bancos/inter.svg" alt="Banco Inter">
-                <img src="img/bancos/itau.svg" alt="Itaú">
-                <img src="img/bancos/bradesco.svg" alt="Bradesco">
-                <img src="img/bancos/bari.svg" alt="Banco Bari">
-                <img src="img/bancos/santander.svg" alt="Santander">
-                <img src="img/bancos/cashme.svg" alt="CashMe">
+                <img src="img/bancos/inter.webp" alt="Banco Inter" />
+                <img src="img/bancos/itau.webp" alt="Itaú" />
+                <img src="img/bancos/bradesco.webp" alt="Bradesco" />
+                <img src="img/bancos/bari.png" alt="Banco Bari" />
+                <img src="img/bancos/santander.webp" alt="Santander" />
+                <img src="img/bancos/cashme.png" alt="CashMe" />
             </div>
         </div>
     </section>
+
     <div id="sobreNos" class="campoSobreNos">
         <div class="sobreWrap">
             <h2 class="tituloSobreNos">Sobre Nós</h2>
@@ -92,18 +127,25 @@
                 Nosso objetivo e propósito é simplificar o acesso ao crédito e a serviços financeiros, oferecendo um atendimento ágil, transparente e seguro. Trabalhamos para entender a real necessidade de cada cliente e indicar a melhor solução disponível no mercado, sempre com responsabilidade e clareza em todas as etapas do processo.
             </p>
 
-            <p class="textoSobreNos">Atuamos na intermediação de produtos como:</p>
+            <p class="textoSobreNos">
+                Contamos com uma equipe qualificada, preparada para oferecer atendimento humanizado, orientação clara e acompanhamento em todas as etapas do processo, desde a análise até a liberação do crédito.
+            </p>
 
-            <ul class="listaServicos">
-                <li><span class="icon">🏠</span> Home Equity (crédito com garantia de imóvel) PF e PJ</li>
-                <li><span class="icon">💳</span> Capital de giro</li>
-                <li><span class="icon">🏢</span> Financiamento de imóveis residenciais e comerciais</li>
-                <li><span class="icon">🔄</span> Portabilidade de financiamento</li>
-                <li><span class="icon">📦</span> Giro de estoque para construtoras e incorporadoras</li>
-                <li><span class="icon">📑</span> Compra de carteiras de construtoras e incorporadoras</li>
-                <li><span class="icon">📄</span> Antecipação de recebíveis</li>
-                <li><span class="icon">📊</span> Plano empresário</li>
-            </ul>
+            <p class="textoSobreNos">
+                Nossa atuação é pautada pela ética, responsabilidade e compromisso com o cliente, garantindo que todas as informações sejam apresentadas de forma simples e objetiva, para que você tome decisões financeiras com tranquilidade e confiança.
+            </p>
+
+            <p class="textoSobreNos">
+                Como Correspondente Bancário, atuamos exclusivamente na intermediação de operações de crédito, sempre em nome e por conta das instituições financeiras parceiras, conforme as diretrizes do Banco Central do Brasil. Garantimos segurança jurídica, confidencialidade de dados e total transparência.
+            </p>
+
+            <p class="textoSobreNos">
+                Nosso diferencial está no atendimento humanizado, na rapidez da análise e na busca constante pelas melhores condições de mercado para nossos clientes, sejam eles pessoas físicas ou empresas.
+            </p>
+
+            <p class="assinaturaSobre">
+                <strong>Versátil Finanças Corporativas:</strong> confiança, experiência e soluções sob medida para você.
+            </p>
 
             <div class="sobreGrid">
                 <div class="sobreCard">
@@ -125,30 +167,9 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="sobreNota">
-                <p class="textoSobreNos">
-                    Contamos com uma equipe qualificada, preparada para oferecer atendimento humanizado, orientação clara e acompanhamento em todas as etapas do processo, desde a análise até a liberação do crédito.
-                </p>
-
-                <p class="textoSobreNos">
-                    Nossa atuação é pautada pela ética, responsabilidade e compromisso com o cliente, garantindo que todas as informações sejam apresentadas de forma simples e objetiva, para que você tome decisões financeiras com tranquilidade e confiança.
-                </p>
-
-                <p class="textoSobreNos">
-                    Como Correspondente Bancário, atuamos exclusivamente na intermediação de operações de crédito, sempre em nome e por conta das instituições financeiras parceiras, conforme as diretrizes do Banco Central do Brasil. Garantimos segurança jurídica, confidencialidade de dados e total transparência.
-                </p>
-
-                <p class="textoSobreNos">
-                    Nosso diferencial está no atendimento humanizado, na rapidez da análise e na busca constante pelas melhores condições de mercado para nossos clientes, sejam eles pessoas físicas ou empresas.
-                </p>
-
-                <p class="assinaturaSobre">
-                    <strong>Versátil Finanças Corporativas:</strong> confiança, experiência e soluções sob medida para você.
-                </p>
-            </div>
         </div>
     </div>
+
     <section id="contato" class="contato">
         <div class="contatoWrap">
             <h2 class="tituloContato">Contato</h2>
@@ -179,7 +200,7 @@
                 <div class="contatoCard">
                     <span class="contatoIcon">📍</span>
                     <h3>Endereço</h3>
-                    <p>Av. T-4 N° 619, QD-141, Lt-4/5, SALA 1111, Condomínio Buena Vista Office. Setor Bueno<br>Goiânia - GO</p>
+                    <p>Av. T-4 N° 619, QD-141, Lt-4/5, SALA 1111, Condomínio Buena Vista Office. Setor Bueno<br />Goiânia - GO</p>
                 </div>
             </div>
         </div>

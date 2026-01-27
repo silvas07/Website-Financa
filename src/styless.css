@@ -16,12 +16,13 @@
     --text: rgba(255,255,255,.92);
     --muted: rgba(255,255,255,.70);
 
-    /* Accent mais profissional (dourado/âmbar) */
     --accent: #D6B25E;
     --accent-2: #B8943E;
 
     --shadow: 0 14px 40px rgba(0,0,0,.45);
 }
+
+html, body { overflow-x: hidden; }
 
 body {
     background-color: var(--bg);
@@ -55,7 +56,7 @@ body {
 
 /* LOGO */
 .logo-img {
-    height: 65px;   /* controla o tamanho real da logo */
+    height: 65px;
     width: auto;
     padding: 0 0 0 15px;
 }
@@ -74,9 +75,7 @@ body {
     transition: color 0.25s;
 }
 
-.menu a:hover {
-    color: var(--accent);
-}
+.menu a:hover { color: var(--accent); }
 
 /* BOTÃO MOBILE */
 .menu-toggle {
@@ -90,9 +89,7 @@ body {
 
 /* MOBILE MENU */
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
+    .menu-toggle { display: block; }
 
     .menu {
         display: none;
@@ -108,9 +105,7 @@ body {
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     }
 
-    .menu.active {
-        display: flex;
-    }
+    .menu.active { display: flex; }
 
     .descricao {
         margin: 20px;
@@ -121,13 +116,11 @@ body {
 /* CONTEÚDO PRINCIPAL */
 .container {
     min-height: 100vh;
-    padding-top: 90px; /* espaço do header fixo */
+    padding-top: 90px;
 }
 
 /* LIST */
-.list {
-    width: 100%;
-}
+.list { width: 100%; }
 
 /* VIDEO */
 .video-bg-container {
@@ -136,21 +129,20 @@ body {
     overflow: hidden;
     position: relative;
 }
-
 .video-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* DESCRIÇÃO (padrão igual Sobre Nós) */
+/* DESCRIÇÃO */
 .descricao{
-    max-width: 1440px;              /* mais espaço em telas grandes */
+    max-width: 1440px;
     margin: 40px auto 40px;
-    padding: 0 48px;                /* respiro lateral */
+    padding: 0 48px;
     display: grid;
-    grid-template-columns: 1.15fr 1fr; /* colunas mais equilibradas */
-    gap: 32px;                      /* distância confortável */
+    grid-template-columns: 1.15fr 1fr;
+    gap: 32px;
     align-items: stretch;
 }
 
@@ -160,6 +152,7 @@ body {
     border-radius: 16px;
     padding: 22px 22px;
     box-shadow: 0 12px 32px rgba(0,0,0,.30);
+    max-width: 100%;
 }
 
 @media (max-width: 992px){
@@ -168,10 +161,9 @@ body {
         padding: 0 18px;
     }
 }
+
+/* TEXTO ESQUERDA */
 .textoDescricao {
-    flex: 2;
-    min-width: 280px;
-    max-width: 520px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -190,79 +182,125 @@ body {
     line-height: 1.75;
 }
 
-.servicos {
-    color: var(--muted);
-    width: 100%;
+/* PAINEL DE DETALHES */
+.detalhesServico {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    min-height: 160px;
 }
 
-.servicosTitulo{
-    color: var(--muted);
-    margin-bottom: 8px;
+.detalhesServico h4 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: var(--text);
 }
 
-.servicos ul {
-    padding-left: 0;
+.detalhesServico p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+/* ===== SERVIÇOS (DIREITA) ===== */
+.servicos { color: var(--muted); width: 100%; }
+.servicosTitulo { color: var(--muted); margin-bottom: 8px; }
+
+/* IMPORTANTÍSSIMO:
+   .listaServicos aqui (accordion) precisa ser COLUNA, não GRID */
+.servicos .listaServicos{
     margin-top: 12px;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
-.servicos li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    line-height: 1.5;
-    color: var(--text);
-    background: rgba(255,255,255,.04);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 10px 12px;
+/* remove qualquer “card” do li antigo dentro de serviços */
+.servicos .listaServicos > li{
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
-.servicos li .icon {
-    display: inline-block;
+/* Ícone nos serviços */
+.servicos .icon{
     width: 34px;
     height: 34px;
+    display: grid;
+    place-items: center;
     border-radius: 10px;
     background: rgba(214,178,94,.14);
     border: 1px solid rgba(214,178,94,.25);
     color: var(--accent);
-    display: grid;
-    place-items: center;
-    margin-right: 10px;
     font-size: 1.1rem;
+    flex: 0 0 auto;
 }
 
-.imagemDescricao {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 180px;
-    max-width: 400px;
-    justify-content: center;
+/* ===== ACCORDION ===== */
+.accordion-item {
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
 }
 
-.imagemDEsc {
-    width: 90%;
-    height: auto;
-    object-fit: contain;
-
-    /* Remove aparência de card */
-    background: none;
+.accordion-header {
+    width: 100%;
+    background: transparent;
     border: none;
-    box-shadow: none;
-    border-radius: 0;
-
-    /* Integração visual com o fundo */
-    opacity: 0.9;
-    filter:
-            drop-shadow(0 18px 35px rgba(0,0,0,.55))
-            drop-shadow(0 0 25px rgba(214,178,94,.15));
+    padding: 14px 16px;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
 }
 
-/* REMOVE CARD SOMENTE DO BLOCO DA LOGO */
+.accordion-title{
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.accordion-icon {
+    margin-left: auto;
+    transition: transform 0.25s ease;
+    opacity: .9;
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    opacity: 0;
+    transition: max-height 0.32s ease, opacity 0.22s ease;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.accordion-item.ativo .accordion-body {
+    max-height: 260px;
+    opacity: 1;
+    padding: 0 16px 14px;
+}
+
+.accordion-item.ativo .accordion-icon {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px){
+    .accordion-title{ white-space: normal; }
+}
+
+/* ===== REMOVE CARD SOMENTE DO BLOCO DA LOGO (se existir) ===== */
 .descricaoCard.imagemDescricao{
     background: none !important;
     border: none !important;
@@ -272,21 +310,17 @@ body {
     padding: 0 !important;
 }
 
-
-/* SOBRE NÓS (refeito) */
+/* ===== SOBRE NÓS ===== */
 .campoSobreNos{
     min-height: 100vh;
-    padding: 50px 18px 50px;
+    padding: 90px 18px 50px;
     background:
             radial-gradient(1200px 600px at 20% 0%, rgba(214,178,94,.10), transparent 60%),
             radial-gradient(900px 500px at 90% 20%, rgba(255,255,255,.06), transparent 60%),
             var(--bg);
 }
 
-.sobreWrap{
-    max-width: 1100px;
-    margin: 0 auto;
-}
+.sobreWrap{ max-width: 1100px; margin: 0 auto; }
 
 .tituloSobreNos{
     margin: 0 0 18px;
@@ -303,10 +337,7 @@ body {
     text-align: justify;
 }
 
-.textoCompacto{
-    margin-bottom: 0;
-    text-align: left;
-}
+.textoCompacto{ margin-bottom: 0; text-align: left; }
 
 .subtituloSobreNos{
     margin: 0 0 12px;
@@ -329,9 +360,9 @@ body {
     background: var(--accent);
 }
 
-/* Listas em cards */
-.listaServicos,
-.listaValores{
+/* ✅ Grid de cards: somente dentro do #sobreNos */
+#sobreNos .listaServicos,
+#sobreNos .listaValores{
     margin: 16px 0 28px;
     padding: 0;
     display: grid;
@@ -339,8 +370,8 @@ body {
     gap: 12px;
 }
 
-.listaServicos li,
-.listaValores li{
+#sobreNos .listaServicos li,
+#sobreNos .listaValores li{
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -350,29 +381,6 @@ body {
     font-weight: 500;
 }
 
-.listaServicos li{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
-}
-
-.listaServicos li .icon{
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border-radius: 10px;
-    background: rgba(214,178,94,.14);
-    border: 1px solid rgba(214,178,94,.25);
-    color: var(--accent);
-    font-size: 1.1rem;
-}
-
-/* Grid missão + valores */
 .sobreGrid{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -389,22 +397,21 @@ body {
     box-shadow: 0 12px 32px rgba(0,0,0,.30);
 }
 
-/* Bloco final "nota" */
-.sobreNota{
-    margin-top: 18px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 18px 18px;
-}
-
 .assinaturaSobre{
     margin-top: 14px;
     color: var(--text);
     font-weight: 600;
 }
 
-/* CONTATO */
+@media (max-width: 900px){
+    #sobreNos .listaServicos,
+    #sobreNos .listaValores{
+        grid-template-columns: 1fr;
+    }
+    .sobreGrid{ grid-template-columns: 1fr; }
+}
+
+/* ===== CONTATO ===== */
 .contato{
     min-height: 80vh;
     padding: 110px 18px 90px;
@@ -414,10 +421,7 @@ body {
             var(--bg);
 }
 
-.contatoWrap{
-    max-width: 1100px;
-    margin: 0 auto;
-}
+.contatoWrap{ max-width: 1100px; margin: 0 auto; }
 
 .tituloContato{
     font-size: clamp(28px, 3vw, 42px);
@@ -479,80 +483,22 @@ body {
     line-height: 1.5;
 }
 
-/* RESPONSIVO */
 @media (max-width: 992px){
-    .contatoGrid{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .descricao{
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-    }
-    .textoDescricao{
-        max-width: 100%;
-    }
+    .contatoGrid{ grid-template-columns: repeat(2, 1fr); }
+    .descricao{ grid-template-columns: 1fr; padding: 0 20px; }
 }
 
 @media (max-width: 520px){
-    .contatoGrid{
-        grid-template-columns: 1fr;
-    }
+    .contatoGrid{ grid-template-columns: 1fr; }
 }
 
-
-/* RESPONSIVO SOBRE NÓS */
-@media (max-width: 900px){
-    .listaServicos,
-    .listaValores{
-        grid-template-columns: 1fr;
-    }
-
-    .sobreGrid{
-        grid-template-columns: 1fr;
-    }
-
-    .imagemDEsc {
-        width: 60%;
-        margin-top: 10px;
-    }
-}
-
-@media (max-width: 768px){
-    /* Mobile: deixa quebrar linha pra não estourar */
-    .listaServicos li{
-        white-space: normal;
-        overflow: visible;
-        text-overflow: clip;
-    }
-
-    /* garante que o texto pode encolher dentro do flex */
-    .servicos li{
-        min-width: 0;
-    }
-}
-
-
-/* evita qualquer estouro horizontal */
-html, body {
-    overflow-x: hidden;
-}
-
-.descricaoCard,
-.servicos li,
-.listaServicos li {
-    max-width: 100%;
-}
-
-/* BANCOS PARCEIROS */
+/* ===== BANCOS PARCEIROS ===== */
 .bancos {
-    padding: 60px 20px 20px;
+    padding: 60px 20px 40px;
     text-align: center;
 }
 
-.bancosWrap {
-    max-width: 1100px;
-    margin: 0 auto;
-}
+.bancosWrap { max-width: 1100px; margin: 0 auto; }
 
 .tituloBancos {
     font-size: clamp(22px, 2.5vw, 32px);
@@ -566,21 +512,37 @@ html, body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    opacity: 0.85;
+    gap: 26px;
+    opacity: 1;
 }
 
 .logos-bancos img {
-    height: 38px;
+    height: 60px;
     width: auto;
-    filter: grayscale(1) brightness(2);
-    transition: all 0.3s ease;
+    filter: none;
+    background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 20px;
+    padding: 12px 16px;
+    box-shadow:
+            inset 0 0 0 1px rgba(255,255,255,.03),
+            0 10px 26px rgba(0,0,0,.45);
+    opacity: 0.95;
+    transform: translateY(0) scale(1);
+    transition:
+            transform .25s ease,
+            box-shadow .25s ease,
+            border-color .25s ease,
+            background .25s ease,
+            opacity .25s ease;
 }
 
 .logos-bancos img:hover {
-    filter: grayscale(0) brightness(1.2);
     opacity: 1;
-    transform: scale(1.05);
+    transform: translateY(-4px) scale(1.04);
 }
 
-
+@media (max-width: 768px) {
+    .logos-bancos { gap: 16px; }
+    .logos-bancos img { height: 60px; padding: 10px 12px; border-radius: 16px; }
+}
